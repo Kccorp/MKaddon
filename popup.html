@@ -29,44 +29,50 @@
 <div class="container mt-3">
     <div class="row">
 
-        <div class="col-6">
-            <div class="input-group input-group-sm mb-3">
-                <span class="input-group-text" id="input-arrive">arrive</span>
-                <input type="text" class="form-control">
+        <div class="col-8">
+            <div class="input-group input-group-sm">
+                <span class="input-group-text">arriver</span>
+<!--                <input type="text" class="form-control" id="input-arrive">-->
+                <input type="text" class="form-control" placeholder="HH" id="input-hour">
+                <input type="text" class="form-control" placeholder="mm" id="input-minutes">
             </div>
+
+
+            <button type="button" class="btn btn-primary my-3" id="BtnRun">Calculer</button>
+
             <div class="input-group input-group-sm mb-3">
                 <span class="input-group-text" id="input-depart">depart</span>
-                <input type="text" class="form-control" disabled>
+                <input type="text" class="form-control" id="inputGo" disabled>
             </div>
         </div>
 
-        <div class="col-6">
+        <div class="col-4">
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio-7h" >
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio-7h" value="7.00">
                 <label class="form-check-label" for="radio-7h">
                     7H00
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio-7h30" >
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio-7h30" value="7.30">
                 <label class="form-check-label" for="radio-7h30">
                     7H30
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio-7h48" >
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio-7h48" value="7.48">
                 <label class="form-check-label" for="radio-7h48">
                     7H48
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio-8h20" >
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio-8h20" value="8.20">
                 <label class="form-check-label" for="radio-8h20">
                     8H20
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio-8h40" >
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio-8h40" value="8.40">
                 <label class="form-check-label" for="radio-8h40">
                     8H40
                 </label>
