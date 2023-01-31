@@ -30,36 +30,44 @@ function getInputTime(){
     return parseFloat(hour + "." + minute);
 }
 
-function calculator(time, menu){
+function checkFastMeal(){
+    return document.getElementById("checkbox").checked;
+}
 
-    // sum of time and menu
+function calculator(time, menu) {
+
+
+
     let somme = time + menu
-    console.log(somme)
+
 
     // get the decimal of time
-    let decimal = (somme - Math.floor(somme))*100
-    decimal = Math.round(decimal)
+    let decimal = (somme - Math.floor(somme)) * 100
+
+    // Add or not 45min for lunch break
+    if (checkFastMeal()){
+        decimal = (Math.round(decimal))+45
+    } else {
+        decimal = Math.round(decimal)
+    }
 
     // get minute and hours to add
-    let howManyHoursToAdd = Math.floor(decimal/60)
-    let minute = (decimal%60)/100
+    let howManyHoursToAdd = Math.floor(decimal / 60)
+    let minute = (decimal % 60) / 100
 
     //recreate the time
     return (Math.floor(somme) + howManyHoursToAdd + minute).toFixed(2)
 
-
 }
-
 function engineController(){
     const testDiv = document.getElementById("inputGo");
 
 
     const menu = getMenu();
-    console.log(menu);
-    const time= getInputTime();
-    console.log(time)
-    testDiv.value = calculator(time, menu);
+    const time = getInputTime();
 
+
+    testDiv.value = calculator(time, menu);
 
 }
 document.getElementById("BtnRun").addEventListener("click", engineController);
