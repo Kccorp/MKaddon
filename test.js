@@ -4,30 +4,36 @@ function getMenu() {
 
     switch (true){
         case document.getElementById("radio-7h").checked :
-            time = "7H";
+            time = 7.00;
             break;
         case document.getElementById("radio-7h30").checked :
-            time = "7H30";
+            time = 7.30;
             break;
         case document.getElementById("radio-7h48").checked :
-            time = "7H48";
+            time = 7.48;
             break;
         case document.getElementById("radio-8h20").checked :
-            time = "8H20";
+            time = 8.20;
             break;
         case document.getElementById("radio-8h40").checked :
-            time = "8H40";
+            time = 8.40;
             break;
     }
 
-    return time
+    return time;
 }
 
 function getInputTime(){
-    const time = document.getElementById("input-arrive").value
+    let hour = document.getElementById("input-hour").value;
+    let minute = document.getElementById("input-minutes").value;
 
-    console.log(time)
-    return time
+    let time = parseFloat(hour+"."+minute);
+
+    return time;
+}
+
+function calculator(time, menu){
+
 }
 
 function engineController(){
@@ -36,6 +42,8 @@ function engineController(){
 
     const menu = getMenu();
     const time= getInputTime();
+
+    calculator(time, menu);
 
     testDiv.value = time;
 
