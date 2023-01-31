@@ -20,19 +20,33 @@ function getMenu() {
             break;
     }
 
-    return time;
+    return parseFloat(time);
 }
 
 function getInputTime(){
     let hour = document.getElementById("input-hour").value;
     let minute = document.getElementById("input-minutes").value;
 
-    let time = parseFloat(hour+"."+minute);
-
-    return time;
+    return parseFloat(hour + "." + minute);
 }
 
 function calculator(time, menu){
+
+    // sum of time and menu
+    let somme = time + menu
+    console.log(somme)
+
+    // get the decimal of time
+    let decimal = (somme - Math.floor(somme))*100
+    decimal = Math.round(decimal)
+
+    // get minute and hours to add
+    let howManyHoursToAdd = Math.floor(decimal/60)
+    let minute = (decimal%60)/100
+
+    //recreate the time
+    return (Math.floor(somme) + howManyHoursToAdd + minute).toFixed(2)
+
 
 }
 
@@ -41,11 +55,10 @@ function engineController(){
 
 
     const menu = getMenu();
+    console.log(menu);
     const time= getInputTime();
-
-    calculator(time, menu);
-
-    testDiv.value = time;
+    console.log(time)
+    testDiv.value = calculator(time, menu);
 
 
 }
