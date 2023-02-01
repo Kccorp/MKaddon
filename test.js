@@ -2,6 +2,7 @@ function getMenu() {
 
     let time = "error";
 
+    // get the menu time selected and return it
     switch (true){
         case document.getElementById("radio-7h").checked :
             time = 7.00;
