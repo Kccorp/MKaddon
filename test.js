@@ -2,7 +2,7 @@ function getMenu() {
 
     let time = "error";
 
-    // get the menu time selected and return it
+
     switch (true){
         case document.getElementById("radio-7h").checked :
             time = 7.00;
@@ -20,8 +20,8 @@ function getMenu() {
             time = 8.40;
             break;
     }
-    if (time=="error"){
-        ErrorTime("vous n'avez pas selectionné de menu")
+    if (time==="error"){
+        ErrorTime("vous n'avez pas choisi de menu")
     }
 
     return parseFloat(time);
@@ -31,14 +31,14 @@ function getInputTime(idH,idM){
     let hour = document.getElementById(idH).value;
     //if hour value is empty
     if (hour<0 || hour >23){
-        ErrorTime("l'heure indiqué n'est pas correct");
+        ErrorTime("l'heure choisi n'est pas correct");
     }
     let minute = document.getElementById(idM).value;
     if (minute<0 ||  minute>59){
-        ErrorTime("l'heure indiqué n'est pas correct");
+        ErrorTime("l'heure choisi n'est pas correct");
     }
     if(hour === "" || minute === ""){
-        ErrorTime("vous n'avez pas indiqué d'heure de départ")
+        ErrorTime("vous n'avez pas choisi d'heure de depart")
     }
 
 
@@ -51,8 +51,6 @@ function checkFastMeal(){
 
 function calculator(time, menu) {
 
-
-
     let somme = time + menu
 
 
@@ -63,15 +61,14 @@ function calculator(time, menu) {
     if (checkFastMeal()){
         decimal = (Math.round(decimal))+45
     } else {
-        console.log("before"+decimal)
+
         decimal = (Math.round(decimal))+MealTime()
-        console.log('mealtm '+MealTime())
-        console.log(decimal)
+
     }
 
     // get minute and hours to add
     let howManyHoursToAdd = Math.floor(decimal / 60)
-    console.log("how many hours :"+ howManyHoursToAdd)
+
     let minute = (decimal % 60) / 100
 
     //recreate the time
@@ -80,12 +77,15 @@ function calculator(time, menu) {
 }
 
 function MealTime(){
-    let tdh= document.getElementById("input-Dhour").value;
-    let tdm= document.getElementById("input-Dminutes").value;
+    let tdh= parseInt(document.getElementById("input-Dhour").value);
+    let tdm= parseInt(document.getElementById("input-Dminutes").value);
 
-    let tfh= document.getElementById("input-Fhour").value;
-    let tfm= document.getElementById("input-Fminutes").value;
+    let tfh= parseInt(document.getElementById("input-Fhour").value);
+    let tfm= parseInt(document.getElementById("input-Fminutes").value);
+
+
     let tm = (tfh*60+tfm)-(tdh*60+tdm);
+
     if (tm <45){
         ErrorTime("vous ne pouvez pas avoir moins de 45 min de pause ! ")
     }
@@ -104,35 +104,13 @@ function setMeal(){
 }
 
 function ErrorTime(tanga){
-    alert("Attention, il y a une erreur : "+tanga)
-    location.reload();
-    //create a red message in a red clearer box with the error in the var tanga
-    let newDiv = document.createElement("div");
-
-    // Set the div's text content to the input text
-    newDiv.textContent = tanga;
-
-    // Set the div's background color to red
-    newDiv.style.backgroundColor = "red";
-
-    // Set the div's position to fixed, so it stays on top of the page
-    newDiv.style.position = "fixed";
-
-    // Set the div's width and height to fit the text content
-    newDiv.style.width = "fit-content";
-    newDiv.style.height = "fit-content";
-
-    // Center the div horizontally and vertically on the page
-    newDiv.style.left = "50%";
-    newDiv.style.top = "0";
-    newDiv.style.transform = "translate(-50%, 0%)";
-
-    // Add the new div to the page
-    document.body.prepend(newDiv);
-
+    document.getElementById('error').removeAttribute("hidden");
+    document.getElementById('error').innerHTML=tanga;
+    throw new Error("my error message");
 }
 
 function engineController(){
+    document.getElementById("error").setAttribute("hidden","");
     const testDiv = document.getElementById("inputGo");
 
 
