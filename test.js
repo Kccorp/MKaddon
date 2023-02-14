@@ -1,3 +1,29 @@
+function checkpref(){
+    // menu=
+    // hour=
+    // minute=
+    // chrome.storage.sync.get(["Saved_menu"]).then((result) => {
+    //     if (result.Saved_menu){
+    //         document.getElementById("radio-"+result.Saved_menu).setAttribute("checked","");
+    //     }
+    // });
+    chrome.storage.sync.get(["Saved_hour"]).then((result) => {
+        if (result.Saved_hour){
+            document.getElementById("input-hour").value=result.Saved_hour;
+        }
+    });
+    chrome.storage.sync.get(["Saved_minute"]).then((result) => {
+        if (result.Saved_minute){
+            document.getElementById("input-minutes").value=result.Saved_minute;
+        }
+    });
+}
+
+function savepref(){
+    // chrome.storage.sync.set({"Saved_menu": getMenu()});
+    chrome.storage.sync.set({Saved_hour: document.getElementById("input-hour").value});
+    chrome.storage.sync.set({Saved_minute: document.getElementById("input-minutes").value});
+}
 function getMenu() {
 
     let time = "error";
@@ -94,23 +120,27 @@ function MealTime(){
 
 function setMeal(){
     if (checkFastMeal()){
-        document.getElementById('fuck1').setAttribute("hidden","");
-        document.getElementById('fuck2').setAttribute("hidden","");
+        document.getElementById('fuck10').setAttribute("disabled","");
+        document.getElementById('fuck20').setAttribute("disabled","");
+        document.getElementById('fuck11').setAttribute("disabled","");
+        document.getElementById('fuck21').setAttribute("disabled","");
     }else {
-        document.getElementById('fuck1').removeAttribute("hidden");
-        document.getElementById('fuck2').removeAttribute("hidden");
+        document.getElementById('fuck10').removeAttribute("disabled");
+        document.getElementById('fuck20').removeAttribute("disabled");
+        document.getElementById('fuck10').removeAttribute("disabled");
+        document.getElementById('fuck20').removeAttribute("disabled");
     }
 
 }
 
 function ErrorTime(tanga){
-    document.getElementById('error').removeAttribute("hidden");
+    document.getElementById('error').removeAttribute("disabled");
     document.getElementById('error').innerHTML=tanga;
     throw new Error("my error message");
 }
 
 function engineController(){
-    document.getElementById("error").setAttribute("hidden","");
+    document.getElementById("error").setAttribute("disabled","");
     const testDiv = document.getElementById("inputGo");
 
 
@@ -121,8 +151,10 @@ function engineController(){
 
 
     testDiv.value = calculator(time, menu);
-
+    savepref();
 }
 document.getElementById("BtnRun").addEventListener("click", engineController);
 document.getElementById("checkbox").addEventListener("click", setMeal);
+setMeal();
+checkpref();
 

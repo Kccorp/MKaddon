@@ -3,6 +3,10 @@
   "name": "MoKlock",
   "description": "une extension pour savoir quand s'enfuir le plus vite légalement",
   "version": "1.0",
+  "permissions":
+    [
+      "storage"
+    ],
   "action": {
         "default_popup": "popup.html",
         "default_title": "MoKlock"
