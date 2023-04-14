@@ -33,26 +33,40 @@
             <div class="input-group input-group-sm">
                 <span class="input-group-text">arriver</span>
 <!--                <input type="text" class="form-control" id="input-arrive">-->
-                <input type="text" class="form-control" placeholder="HH" id="input-hour">
-                <input type="text" class="form-control" placeholder="mm" id="input-minutes">
+                <input type="text" class="form-control" placeholder="HH" value="8" id="input-hour">
+                <input type="text" class="form-control" placeholder="mm" value="00" id="input-minutes">
             </div>
 
 
             <button type="button" class="btn btn-primary my-3" id="BtnRun">Calculer</button>
 
-            <div class="input-group-sm mb-3">
+            <div class="input-group-sm mb-3" id="check">
                 <div class="input-group-text">
-                    <input class="form-check-input mt-0" type="checkbox" id="checkbox" value="" aria-label="Checkbox for following text input">
+                    <input class="form-check-input mt-0" type="checkbox" id="checkbox" value="" aria-label="Checkbox for following text input" checked>
                     <label class="form-check-label ms-1" for="checkbox">
                         Fast meal
                     </label>
                 </div>
             </div>
 
+            <div class="input-group input-group-sm" id="fuck1">
+                <span class="input-group-text">debut de pause</span>
+                <input id="fuck10" type="text" class="form-control" placeholder="HH" id="input-Dhour">
+                <input id="fuck11" type="text" class="form-control" placeholder="mm" id="input-Dminutes">
+            </div>
+            <div class="input-group input-group-sm mb-3" id="fuck2">
+                <span class="input-group-text">fin de pause</span>
+                <input id="fuck20" type="text" class="form-control" placeholder="HH" id="input-Fhour">
+                <input id="fuck21" type="text" class="form-control" placeholder="mm" id="input-Fminutes">
+            </div>
+
+
             <div class="input-group input-group-sm mb-3">
                 <span class="input-group-text" id="input-depart">depart</span>
                 <input type="text" class="form-control" id="inputGo" disabled>
             </div>
+
+
         </div>
 
         <div class="col-4">
@@ -88,7 +102,10 @@
             </div>
         </div>
 
+
+
     </div>
+    <div class="text-danger" id="error"></div>
 </div>
 
     <script type="text/javascript" src="test.js"></script>
